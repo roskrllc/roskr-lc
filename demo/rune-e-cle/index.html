@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>RUNE-E — CLE demo</title>
+  <style>
+    :root {
+      --navy: #0c0e12;
+      --panel: #141820;
+      --line: #2a3140;
+      --text: #e8eaed;
+      --muted: #9aa3b2;
+      --gold: #c4a35a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    header img.lockup { height: 36px; width: auto; }
+    header .meta { flex: 1; }
+    header h1 {
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    header p {
+      margin: 0.15rem 0 0;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .badge {
+      font-size: 0.7rem;
+      color: var(--navy);
+      background: var(--gold);
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    nav {
+      display: flex;
+      gap: 0.4rem;
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid var(--line);
+      overflow-x: auto;
+      background: #10141c;
+    }
+    nav button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      font: inherit;
+      font-size: 0.8rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    nav button[aria-current="true"] {
+      color: var(--navy);
+      background: var(--gold);
+      border-color: var(--gold);
+      font-weight: 600;
+    }
+    main { padding: 1rem 1.25rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .caption {
+      margin: 0 0 0.75rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.45;
+    }
+    .caption strong { color: var(--text); font-weight: 600; }
+    .shot {
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #000;
+      display: block;
+    }
+    .seed {
+      margin-top: 1.25rem;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .seed h2 {
+      margin: 0 0 0.5rem;
+      font-size: 0.8rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .seed ul { margin: 0; padding-left: 1.1rem; }
+    .seed li { margin: 0.25rem 0; }
+    footer {
+      padding: 0 1.25rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .row { display: flex; gap: 0.5rem; margin-top: 0.9rem; flex-wrap: wrap; }
+    .row button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      font: inherit;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    .row button.primary {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="lockup" src="assets/rune-e-lockup-light.png" alt="RUNE-E" />
+    <div class="meta">
+      <h1>CLE demo</h1>
+      <p>PHI-safe fiction · Cleveland public geography · offline / no login</p>
+    </div>
+    <span class="badge">DEMO</span>
+  </header>
+
+  <nav aria-label="Walkthrough steps" id="steps">
+    <button type="button" data-step="0" aria-current="true">1 · Board</button>
+    <button type="button" data-step="1">2 · Open trip</button>
+    <button type="button" data-step="2">3 · CoC gate</button>
+    <button type="button" data-step="3">4 · Trip thread</button>
+  </nav>
+
+  <main>
+    <section class="panel active" id="step-0" data-title="Board">
+      <p class="caption"><strong>Dispatch board</strong> — three live CLE trips with RUNE-E chrome. Status spine visible at a glance (no WhatsApp dual-relay).</p>
+      <img class="shot" src="assets/board.png" alt="RUNE-E dispatch board with three CLE trips" />
+    </section>
+    <section class="panel" id="step-1" data-title="Open trip">
+      <p class="caption"><strong>Open trip</strong> — status spine + route detail (Clinic / UH / Hopkins / MetroHealth / CLE / BKL as public place labels only).</p>
+      <img class="shot" src="assets/open-trip.png" alt="RUNE-E open trip with status spine" />
+    </section>
+    <section class="panel" id="step-2" data-title="CoC gate">
+      <p class="caption"><strong>Chain-of-custody gate</strong> — labeled evidence slot before advance at Loaded (typed evidence, not a chat attachment).</p>
+      <img class="shot" src="assets/coc-gate.png" alt="RUNE-E chain-of-custody photo gate" />
+    </section>
+    <section class="panel" id="step-3" data-title="Trip thread">
+      <p class="caption"><strong>In-app trip thread</strong> — driver + dispatch + customer on one secure thread per trip (replaces dual WhatsApp).</p>
+      <img class="shot" src="assets/thread.png" alt="RUNE-E in-app trip thread" />
+    </section>
+
+    <div class="row">
+      <button type="button" id="prev">Back</button>
+      <button type="button" class="primary" id="next">Next</button>
+    </div>
+
+    <div class="seed">
+      <h2>Seed trips (fictional · no PHI)</h2>
+      <ul>
+        <li>Kidney · CLE Clinic Main → CLE Hopkins</li>
+        <li>Liver · UH Cleveland → BKL Burke</li>
+        <li>Heart · CLE Hopkins → MetroHealth Main</li>
+      </ul>
+      <h2>Your CRM</h2>
+      <p>If this is useful, RUNE-E can link to the custom CRM you already run. That link is a later step, only if you want to buy in. This file is the demo only.</p>
+    </div>
+  </main>
+
+  <footer>
+    RoskrLC · RUNE-E demo · Sample trips only · No real patient / UNOS / donor IDs ·
+    Open this folder offline: double-click <code>index.html</code> (Chrome / Edge / Safari). Keep the <code>assets/</code> folder beside it.
+  </footer>
+
+  <script>
+    (function () {
+      var step = 0;
+      var panels = Array.prototype.slice.call(document.querySelectorAll(".panel"));
+      var buttons = Array.prototype.slice.call(document.querySelectorAll("#steps button"));
+      function show(i) {
+        step = Math.max(0, Math.min(panels.length - 1, i));
+        panels.forEach(function (p, idx) {
+          p.classList.toggle("active", idx === step);
+        });
+        buttons.forEach(function (b, idx) {
+          b.setAttribute("aria-current", idx === step ? "true" : "false");
+        });
+        document.getElementById("prev").disabled = step === 0;
+        document.getElementById("next").textContent = step === panels.length - 1 ? "Done" : "Next";
+      }
+      buttons.forEach(function (b) {
+        b.addEventListener("click", function () {
+          show(Number(b.getAttribute("data-step")));
+        });
+      });
+      document.getElementById("prev").addEventListener("click", function () { show(step - 1); });
+      document.getElementById("next").addEventListener("click", function () {
+        if (step < panels.length - 1) show(step + 1);
+      });
+      show(0);
+    })();
+  </script>
+</body>
+</html>
