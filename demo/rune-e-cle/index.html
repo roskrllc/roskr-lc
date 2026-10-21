@@ -198,7 +198,7 @@
 
   <footer>
     RoskrLC · RUNE-E demo · Sample trips only · No real patient / UNOS / donor IDs ·
-    Open this folder offline: double-click <code>index.html</code> (Chrome / Edge / Safari). Keep the <code>assets/</code> folder beside it.
+    <span id="offline-note" hidden>Offline copy: open <code>index.html</code> in Chrome / Edge / Safari with the <code>assets/</code> folder beside it.</span>
   </footer>
 
   <script>
@@ -215,7 +215,7 @@
           b.setAttribute("aria-current", idx === step ? "true" : "false");
         });
         document.getElementById("prev").disabled = step === 0;
-        document.getElementById("next").textContent = step === panels.length - 1 ? "Done" : "Next";
+        document.getElementById("next").textContent = step === panels.length - 1 ? "Start over" : "Next";
       }
       buttons.forEach(function (b) {
         b.addEventListener("click", function () {
@@ -224,8 +224,13 @@
       });
       document.getElementById("prev").addEventListener("click", function () { show(step - 1); });
       document.getElementById("next").addEventListener("click", function () {
-        if (step < panels.length - 1) show(step + 1);
+        show(step < panels.length - 1 ? step + 1 : 0);
       });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") show(step + 1);
+        if (e.key === "ArrowLeft") show(step - 1);
+      });
+      if (location.protocol === "file:") { var n = document.getElementById("offline-note"); if (n) n.hidden = false; }
       show(0);
     })();
   </script>
