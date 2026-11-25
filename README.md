@@ -1,2 +1,3 @@
 # roskr-lc
-Official website for Roskr LC — medical research services and medical transport technology.
+
+Public website for Roskr LC ([roskr.io](https://roskr.io)).
